@@ -178,10 +178,6 @@ export function PathwaySection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-24"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-            <Globe className="h-4 w-4" />
-            Interactive Journey
-          </span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Contamination <span className="text-gradient">Pathway</span>
           </h2>
@@ -195,30 +191,7 @@ export function PathwaySection() {
         <div className="hidden lg:block mb-16">
           <div className="relative">
             {/* Connection Line with Flow Animation */}
-            <svg className="absolute top-20 left-0 right-0 h-4 z-0" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="var(--chart-5)" />
-                  <stop offset="20%" stopColor="var(--primary)" />
-                  <stop offset="40%" stopColor="var(--chart-1)" />
-                  <stop offset="60%" stopColor="var(--chart-3)" />
-                  <stop offset="80%" stopColor="var(--chart-4)" />
-                  <stop offset="100%" stopColor="var(--accent)" />
-                </linearGradient>
-              </defs>
-              <motion.rect
-                x="8%"
-                y="6"
-                width="84%"
-                height="4"
-                rx="2"
-                fill="url(#pathGradient)"
-                initial={{ scaleX: 0, originX: 0 }}
-                animate={isInView ? { scaleX: 1 } : {}}
-                transition={{ duration: 1.5, delay: 0.5 }}
-              />
-            </svg>
-
+            
             {/* Stage Nodes */}
             <div className="relative flex items-start justify-between">
               {pathwayStages.map((stage, index) => (

@@ -109,16 +109,11 @@ export function ReferencesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-chart-5/10 border border-chart-5/20 text-chart-5 text-sm font-medium mb-6">
-            <BookOpen className="h-4 w-4" />
-            Scientific Sources
-          </span>
+         
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Research <span className="text-gradient">References</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            All information is based on peer-reviewed research and authoritative government sources.
-          </p>
+          
         </motion.div>
 
         {/* Academic References */}
@@ -180,7 +175,6 @@ export function ReferencesSection() {
             <div className="absolute inset-0 bg-chart-5/5 blur-3xl rounded-3xl" />
             <div className="relative bg-card rounded-3xl border border-border p-8 lg:p-10">
               <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-6 text-center flex items-center justify-center gap-2">
-                <ExternalLink className="h-5 w-5 text-chart-5" />
                 Additional Resources
               </h3>
               <div className="grid sm:grid-cols-3 gap-5">
@@ -207,18 +201,7 @@ export function ReferencesSection() {
           </div>
         </motion.div>
 
-        {/* Citation Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 text-center"
-        >
-          <p className="text-sm text-muted-foreground bg-muted/30 rounded-2xl px-6 py-4 border border-border inline-block">
-            This educational resource references <strong className="text-foreground">6 peer-reviewed sources</strong> including 
-            journal articles, foundational papers, and government reports.
-          </p>
-        </motion.div>
+        
       </div>
     </section>
   )

@@ -110,17 +110,9 @@ export function ImpactsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
-            <AlertTriangle className="h-4 w-4" />
-            Critical Health Data
-          </span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Health & <span className="text-gradient">Ecosystem</span> Impacts
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            PFAS exposure has been linked to numerous adverse health effects. 
-            The scientific evidence continues to grow as more research is conducted.
-          </p>
         </motion.div>
 
         {/* Human Health Effects */}

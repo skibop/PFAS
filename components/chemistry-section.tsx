@@ -74,17 +74,9 @@ export function ChemistrySection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-            <Atom className="h-4 w-4" />
-            Molecular Science
-          </span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Understanding <span className="text-gradient">PFAS Chemistry</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            The unique molecular structure of PFAS—with carbon atoms fully surrounded by fluorine—creates 
-            the strongest bond in organic chemistry and is the root cause of their persistence.
-          </p>
         </motion.div>
 
         {/* Carbon-Fluorine Bond Explanation */}

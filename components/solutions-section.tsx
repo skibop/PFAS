@@ -101,17 +101,10 @@ export function SolutionsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-chart-3/10 border border-chart-3/20 text-chart-3 text-sm font-medium mb-6">
-            <Lightbulb className="h-4 w-4" />
-            Global Response
-          </span>
+        
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Addressing the <span className="text-gradient">PFAS Crisis</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Governments and researchers worldwide are developing approaches to tackle PFAS. 
-            Explore leading regulatory and technological solutions.
-          </p>
         </motion.div>
 
         {/* Solution Selector */}

@@ -48,10 +48,6 @@ export function OverviewSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-            <Zap className="h-4 w-4" />
-            Understanding the Crisis
-          </span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             What Are <span className="text-gradient">PFAS</span>?
           </h2>
