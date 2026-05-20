@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer"
 
 export const metadata = {
   title: "PFAS Chemistry | Understanding Carbon-Fluorine Bonds",
-  description: "Explore the unique chemistry of PFAS compounds, including PFOA, PFOS, and GenX. Learn why carbon-fluorine bonds make these forever chemicals so persistent.",
+  description: "Explore the chemistry of PFAS compounds, including PFOA, PFOS, and GenX. Learn why carbon-fluorine bonds make these forever chemicals so persistent.",
 }
 
 export default function ChemistryPage() {
