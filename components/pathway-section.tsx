@@ -23,6 +23,7 @@ const pathwayStages = [
         "Solid waste: PFAS-containing materials → Landfill leachate"
       ],
       conditions: "Continuous release at manufacturing facilities",
+      image: "/pictures/industrial.jpg",
     },
     impact: "Industrial facilities release PFAS through wastewater discharge, air emissions, and solid waste disposal. A single facility can contaminate water supplies for hundreds of thousands of people.",
     example: "The Chemours Company plant in Fayetteville, NC released GenX compounds into the Cape Fear River, contaminating drinking water for over 200,000 residents.",
@@ -47,7 +48,8 @@ const pathwayStages = [
         "Oxidation: FTOHs + OH• → PFCAs",
         "Wet deposition: PFAS(g) + H₂O → PFAS(aq)"
       ],
-      conditions: "Temperature, UV radiation, atmospheric oxidants"
+      conditions: "Temperature, UV radiation, atmospheric oxidants",
+      image: "/pictures/atmosphere.jpg",
     },
     impact: "Volatile PFAS compounds travel hundreds of miles through the atmosphere. Fluorotelomer alcohols (FTOHs) oxidize to form PFOA and other persistent compounds that deposit with rainfall.",
     example: "PFAS have been detected in remote Arctic regions and mountain snow, demonstrating long-range atmospheric transport from industrial sources thousands of miles away.",
@@ -72,7 +74,8 @@ const pathwayStages = [
         "Adsorption: Kd = [PFAS]soil / [PFAS]water",
         "Bioconcentration: BCF = [PFAS]organism / [PFAS]water"
       ],
-      conditions: "pH 6-8, organic carbon content affects sorption"
+      conditions: "pH 6-8, organic carbon content affects sorption",
+      image: "/pictures/watercontamination.jpg",
     },
     impact: "PFAS are highly mobile in water due to their surfactant properties. They contaminate both surface water and groundwater, persisting for decades and spreading far from original release points.",
     example: "Near Pease Air Force Base in Portsmouth, NH, groundwater PFAS levels reached 2,600 ppt—65x higher than EPA health advisory levels.",
@@ -97,7 +100,8 @@ const pathwayStages = [
         "Plant uptake: PFAS(soil) → PFAS(root) → PFAS(shoot)",
         "Leaching: PFAS-Soil + Rain → PFAS(groundwater)"
       ],
-      conditions: "Organic matter content, soil pH, clay content affect retention"
+      conditions: "Organic matter content, soil pH, clay content affect retention",
+      image: "/pictures/soilpollution.jpg",
     },
     impact: "PFAS bind to organic matter in soil but continue to leach into groundwater over time. Crops grown in contaminated soil can bioaccumulate PFAS, introducing them into the food supply.",
     example: "Farms in Maine using PFAS-contaminated biosolids as fertilizer had to destroy crops and livestock. Some farms showed soil contamination of 1,000+ ppt PFOS.",
@@ -122,7 +126,8 @@ const pathwayStages = [
         "Trophic transfer: TMF = Cpredator / Cprey (1.5-4x)",
         "Protein binding: PFAS + Albumin → PFAS-Protein"
       ],
-      conditions: "Chain length affects bioaccumulation: C8 > C6 > C4"
+      conditions: "Chain length affects bioaccumulation: C8 > C6 > C4",
+      image: "/pictures/bio.jpg",
     },
     impact: "PFAS bioaccumulate in aquatic organisms, with concentrations magnifying up the food chain. Fish at the top of aquatic food webs can have PFAS levels thousands of times higher than the surrounding water.",
     example: "Fish consumption advisories for PFAS have been issued in 23 US states. In some Great Lakes fish, PFOS levels exceed 40,000 ppt.",
@@ -147,7 +152,8 @@ const pathwayStages = [
         "Distribution: PFAS + Serum albumin → Tissue accumulation",
         "Elimination t½: PFOA = 2-8 years, PFOS = 4-5 years"
       ],
-      conditions: "No metabolism; elimination only via renal excretion"
+      conditions: "No metabolism; elimination only via renal excretion",
+      image: "/pictures/exposure.jpg",
     },
     impact: "PFAS accumulate in human blood, liver, and kidneys. They cross the placental barrier and are found in breast milk. Health effects include cancer, thyroid disease, immune suppression, and reproductive issues.",
     example: "CDC NHANES data shows 98% of Americans have detectable PFAS in their blood. Communities near contamination sites show serum levels 100x higher than national averages.",
@@ -335,7 +341,7 @@ export function PathwaySection() {
                         <div className="grid lg:grid-cols-3 gap-8">
                           {/* Chemistry Panel */}
                           <div className="lg:col-span-1">
-                            <div className="bg-muted/30 rounded-2xl p-6 h-full border border-border">
+                            <div className="bg-muted/30 rounded-2xl p-6 h-full border border-border flex flex-col">
                               <div className="flex items-center gap-2 mb-4">
                                 <Beaker className="h-5 w-5 text-primary" />
                                 <h4 className="font-bold text-foreground">{stage.chemistry.process}</h4>
@@ -351,6 +357,23 @@ export function PathwaySection() {
                                 <p className="text-xs text-muted-foreground">
                                   <span className="font-semibold text-foreground">Conditions:</span> {stage.chemistry.conditions}
                                 </p>
+                              </div>
+                              {/* Image — fills remaining space below Conditions */}
+                              <div className="mt-4 flex-1 min-h-0">
+                                {stage.chemistry.image ? (
+                                  <img
+                                    src={stage.chemistry.image}
+                                    alt={stage.title}
+                                    className="w-full h-full min-h-[120px] object-cover rounded-xl"
+                                  />
+                                ) : (
+                                  <div className="w-full h-full min-h-[120px] rounded-xl border-2 border-dashed border-border bg-muted/20 flex flex-col items-center justify-center gap-2 text-muted-foreground/50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18M3 3h18M3 9h18" />
+                                    </svg>
+                                    <span className="text-xs font-medium">Image</span>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>

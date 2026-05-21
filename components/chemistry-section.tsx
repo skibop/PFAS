@@ -3,8 +3,27 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Atom, Beaker, ThermometerSun, Info, Zap, AlertTriangle } from "lucide-react"
+import { Beaker, ThermometerSun, Info, Zap, AlertTriangle, ImageIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+// ─── Image Placeholders ───────────────────────────────────────────────────────
+// Replace the commented-out <img> line and remove the placeholder content
+// Slot 1: beside the C-F bond bullet points (good for a molecular diagram)
+// Slot 2: below the formula panel in the compound card (per-compound structure)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function ImageSlot({ label, className }: { label: string; className?: string }) {
+  return (
+    <div
+      className={`relative rounded-2xl border-2 border-dashed border-border bg-muted/20 flex flex-col items-center justify-center gap-3 overflow-hidden ${className}`}
+    >
+      <ImageIcon className="h-8 w-8 text-muted-foreground/40" />
+      <p className="text-xs font-medium text-muted-foreground/50 text-center px-4">{label}</p>
+      {/* ↓ When ready: delete the two lines above, uncomment below, and fill in src/alt */}
+      {/* <img src="/your-image.png" alt="..." className="absolute inset-0 w-full h-full object-cover rounded-2xl" /> */}
+    </div>
+  )
+}
 
 export function ChemistrySection() {
   const ref = useRef(null)
@@ -65,7 +84,7 @@ export function ChemistrySection() {
     <section className="relative py-24 lg:py-32 overflow-hidden" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -88,7 +107,7 @@ export function ChemistrySection() {
         >
           <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-3xl" />
           <div className="relative bg-card rounded-3xl border border-border p-8 lg:p-10">
-            <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 items-start">
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/20">
@@ -97,16 +116,16 @@ export function ChemistrySection() {
                   <h3 className="text-2xl font-bold text-foreground">The Carbon-Fluorine Bond</h3>
                 </div>
                 <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
-                  The C-F bond has a <strong className="text-primary">bond dissociation energy of 485 kJ/mol</strong>—making it 
+                  The C-F bond has a <strong className="text-primary">bond dissociation energy of 485 kJ/mol</strong>—making it
                   one of the strongest single bonds in organic chemistry. This exceptional stability comes from:
                 </p>
-                <ul className="space-y-4 text-muted-foreground">
+                <ul className="space-y-4 text-muted-foreground mb-8">
                   {[
                     "Fluorine's high electronegativity (3.98) creating strong polar bonds",
                     "Small atomic radius of fluorine allowing tight orbital overlap",
                     "Fluorine's lone pairs repelling potential attacking molecules"
                   ].map((item, index) => (
-                    <motion.li 
+                    <motion.li
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -119,17 +138,17 @@ export function ChemistrySection() {
                   ))}
                 </ul>
               </div>
-              
+
               {/* Bond Energy Visualization */}
               <div className="bg-muted/30 rounded-2xl p-6 lg:p-8 border border-border">
                 <h4 className="font-bold text-foreground mb-6 text-center text-lg">Bond Dissociation Energies (kJ/mol)</h4>
                 <div className="space-y-5">
                   {[
-                    { bond: "C-F", energy: 485, color: "from-accent to-accent/70", width: "100%" },
-                    { bond: "C-H", energy: 411, color: "from-chart-4 to-chart-4/70", width: "85%" },
-                    { bond: "C-O", energy: 358, color: "from-primary to-primary/70", width: "74%" },
-                    { bond: "C-C", energy: 346, color: "from-chart-1 to-chart-1/70", width: "71%" },
-                    { bond: "C-Cl", energy: 327, color: "from-chart-3 to-chart-3/70", width: "67%" },
+                    { bond: "C-F",  energy: 485, color: "from-accent to-accent/70",    width: "100%" },
+                    { bond: "C-H",  energy: 411, color: "from-chart-4 to-chart-4/70",  width: "85%"  },
+                    { bond: "C-O",  energy: 358, color: "from-primary to-primary/70",  width: "74%"  },
+                    { bond: "C-C",  energy: 346, color: "from-chart-1 to-chart-1/70",  width: "71%"  },
+                    { bond: "C-Cl", energy: 327, color: "from-chart-3 to-chart-3/70",  width: "67%"  },
                   ].map((item, index) => (
                     <div key={item.bond} className="flex items-center gap-4">
                       <span className="font-mono text-sm text-foreground w-12 font-bold">{item.bond}</span>
@@ -191,9 +210,10 @@ export function ChemistrySection() {
           <div className="relative bg-card rounded-3xl border border-border overflow-hidden">
             <div className="p-8 lg:p-10">
               <div className="grid lg:grid-cols-3 gap-8">
-                {/* Structure Display */}
-                <div className="lg:col-span-1">
-                  <div className="bg-muted/30 rounded-2xl p-6 text-center h-full border border-border flex flex-col justify-center">
+
+                {/* Structure Display + Image Slot 2 */}
+                <div className="lg:col-span-1 flex flex-col gap-5">
+                  <div className="bg-muted/30 rounded-2xl p-6 text-center border border-border flex flex-col justify-center">
                     <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br from-${current.color}/20 to-${current.color}/5 border border-${current.color}/20 flex items-center justify-center mx-auto mb-6`}>
                       <Beaker className={`h-10 w-10 text-${current.color}`} />
                     </div>
@@ -206,7 +226,8 @@ export function ChemistrySection() {
                       <p className="font-bold text-xl text-foreground">{current.molecularWeight}</p>
                     </div>
                   </div>
-                </div>
+{/* <img src="/pictures/Perfluorooctanoic_acid.png" className="h-44 w-full object-contain rounded-2xl bg-white p-3" /> */}
+</div>
 
                 {/* Description and Properties */}
                 <div className="lg:col-span-2 space-y-6">

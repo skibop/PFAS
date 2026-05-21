@@ -9,7 +9,7 @@ const healthEffects = [
   {
     icon: Dna,
     title: "Cancer",
-    description: "PFAS exposure is linked to increased risk of kidney cancer, testicular cancer, and other malignancies.",
+    description: "PFAS exposure is linked to increased risk of kidney cancer, testicular cancer, and other tyeps of cancer.",
     evidence: "C8 Health Project: 69,000 participants near DuPont facility showed elevated cancer rates",
     mechanism: "PFAS interfere with cellular signaling pathways and may promote tumor growth through endocrine disruption",
     color: "accent"
@@ -60,6 +60,7 @@ const ecosystemImpacts = [
   {
     icon: Fish,
     organism: "Fish & Aquatic Life",
+    img: "/pictures/fish.jpg", // ← swap in your image path
     effects: [
       "Bioaccumulation up to 30,000x water concentrations",
       "Liver damage and metabolic disruption",
@@ -71,6 +72,7 @@ const ecosystemImpacts = [
   {
     icon: Bird,
     organism: "Birds & Wildlife",
+    img: "/pictures/birds.jpeg", // ← swap in your image path
     effects: [
       "Eggshell thinning and reproductive failure",
       "Liver enlargement and lesions",
@@ -82,6 +84,7 @@ const ecosystemImpacts = [
   {
     icon: Bug,
     organism: "Soil Organisms",
+    img: "/pictures/earthworm.jpeg", // ← swap in your image path
     effects: [
       "Altered microbial communities",
       "Reduced earthworm reproduction",
@@ -92,7 +95,6 @@ const ecosystemImpacts = [
   }
 ]
 
-// AFFF pathway: source → three affected environments/organisms
 const afffPathway = {
   source: {
     name: "Aqueous Film-Forming Foam (AFFF)",
@@ -105,8 +107,8 @@ const afffPathway = {
     {
       icon: Droplets,
       label: "Groundwater & drinking supply",
+      img: "/pictures/water.jpg", // ← swap in your image path
       color: "#185FA5",
-      colorLight: "#E6F1FB",
       description:
         "PFAS leach through soil into aquifers at rates conventional filtration cannot intercept. Contaminated groundwater reaches municipal wells and private supplies, directly exposing human populations.",
       stat: "Up to 6 mg/L PFAS detected near AFFF training sites",
@@ -114,8 +116,8 @@ const afffPathway = {
     {
       icon: Sprout,
       label: "Agricultural soil & crops",
+      img: "/pictures/soil.jpg", // ← swap in your image path
       color: "#3B6D11",
-      colorLight: "#EAF3DE",
       description:
         "Irrigation with contaminated water and direct land application of AFFF-affected runoff allows PFAS to bind to soil particles. Plants absorb PFAS through root uptake, entering the food supply through vegetables and grain.",
       stat: "Root vegetables accumulate PFAS at 10–100x soil levels",
@@ -123,8 +125,8 @@ const afffPathway = {
     {
       icon: Wind,
       label: "Air & spray drift",
+      img: "/pictures/air.jpg", // ← swap in your image path
       color: "#854F0B",
-      colorLight: "#FAEEDA",
       description:
         "During active firefighting and training, fine AFFF mist becomes airborne. PFAS-laden aerosols travel significant distances from the release point, settling on surface water, soil, and vegetation far from the original site.",
       stat: "Detectable PFAS drift recorded up to 2 km from discharge",
@@ -193,36 +195,43 @@ export function ImpactsSection() {
           {/* Three affected pathways */}
           <div className="grid md:grid-cols-3 gap-5">
             {afffPathway.pathways.map((pathway, index) => (
-  <motion.div
-    key={pathway.label}
-    initial={{ opacity: 0, y: 20 }}
-    animate={isInView ? { opacity: 1, y: 0 } : {}}
-    transition={{ duration: 0.5, delay: 0.3 + index * 0.12 }}
-    className="rounded-2xl border border-border bg-card overflow-hidden"
-  >
-    <div
-      className="px-5 py-4 flex items-center gap-3 border-b border-border"
-      style={{ background: pathway.color + "18" }}
-    >
-      <div
-        className="p-2 rounded-lg flex-shrink-0"
-        style={{ background: pathway.color + "22", border: `1px solid ${pathway.color}44` }}
-      >
-        <pathway.icon size={18} style={{ color: pathway.color }} />
-      </div>
-      <h4 className="font-bold text-sm text-foreground leading-snug">{pathway.label}</h4>
-    </div>
-    <div className="p-5 space-y-4">
-      <p className="text-sm text-muted-foreground leading-relaxed">{pathway.description}</p>
-      <div
-        className="rounded-xl px-4 py-2.5 text-xs font-medium"
-        style={{ background: pathway.color + "18", color: pathway.color, border: `1px solid ${pathway.color}33` }}
-      >
-        {pathway.stat}
-      </div>
-    </div>
-  </motion.div>
-))}
+              <motion.div
+                key={pathway.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.12 }}
+                className="rounded-2xl border border-border bg-card overflow-hidden"
+              >
+                <div
+                  className="px-5 py-4 flex items-center gap-3 border-b border-border"
+                  style={{ background: pathway.color + "18" }}
+                >
+                  <div
+                    className="p-2 rounded-lg flex-shrink-0"
+                    style={{ background: pathway.color + "22", border: `1px solid ${pathway.color}44` }}
+                  >
+                    <pathway.icon size={18} style={{ color: pathway.color }} />
+                  </div>
+                  <h4 className="font-bold text-sm text-foreground leading-snug">{pathway.label}</h4>
+                </div>
+
+                <img
+                  src={pathway.img}
+                  alt={pathway.label}
+  className="mx-5 mt-5 h-36 w-[calc(100%-2.5rem)] object-cover rounded-xl"
+                />
+
+                <div className="p-5 space-y-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed">{pathway.description}</p>
+                  <div
+                    className="rounded-xl px-4 py-2.5 text-xs font-medium"
+                    style={{ background: pathway.color + "18", color: pathway.color, border: `1px solid ${pathway.color}33` }}
+                  >
+                    {pathway.stat}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
@@ -309,29 +318,37 @@ export function ImpactsSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
                 whileHover={{ y: -5 }}
-                className="bg-card rounded-2xl border border-border p-6 hover:border-chart-3/50 transition-all"
+                className="bg-card rounded-2xl border border-border overflow-hidden hover:border-chart-3/50 transition-all"
               >
-                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
+                <div className="flex items-center gap-3 p-6 pb-4 border-b border-border">
                   <div className="p-3 rounded-xl bg-chart-3/10 border border-chart-3/20">
                     <impact.icon className="h-6 w-6 text-chart-3" />
                   </div>
                   <h4 className="font-bold text-foreground text-lg">{impact.organism}</h4>
                 </div>
 
-                <ul className="space-y-3 mb-5">
-                  {impact.effects.map((effect, i) => (
-                    <li key={i} className="flex items-start gap-2 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-chart-3 mt-2 flex-shrink-0" />
-                      <span className="text-sm">{effect}</span>
-                    </li>
-                  ))}
-                </ul>
+                <img
+                  src={impact.img}
+                  alt={impact.organism}
+  className="mx-5 mt-5 h-36 w-[calc(100%-2.5rem)] object-cover rounded-xl"
+                />
 
-                <div className="bg-muted/30 rounded-xl px-4 py-3 border border-border">
-                  <p className="text-xs text-muted-foreground">
-                    <span className="font-semibold text-foreground">Effect threshold: </span>
-                    {impact.threshold}
-                  </p>
+                <div className="p-6 pt-4">
+                  <ul className="space-y-3 mb-5">
+                    {impact.effects.map((effect, i) => (
+                      <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                        <span className="w-1.5 h-1.5 rounded-full bg-chart-3 mt-2 flex-shrink-0" />
+                        <span className="text-sm">{effect}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="bg-muted/30 rounded-xl px-4 py-3 border border-border">
+                    <p className="text-xs text-muted-foreground">
+                      <span className="font-semibold text-foreground">Effect threshold: </span>
+                      {impact.threshold}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
