@@ -79,7 +79,7 @@ export function OverviewSection() {
                 </div>
                 
                 <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
-                  This resource focuses on <strong className="text-foreground">industrial manufacturing facilities</strong> as 
+                  This pathway focuses on <strong className="text-foreground">industrial manufacturing facilities</strong> as 
                   the primary source of environmental PFAS contamination.
                 </p>
                 

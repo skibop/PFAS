@@ -15,7 +15,7 @@ const merriweather = Merriweather({
 })
 
 export const metadata: Metadata = {
-  title: 'PFAS: The Forever Chemicals | Understanding Chemical Waste Migration',
+  title: 'PFAS: The Forever Chemicals',
   description: 'An educational resource exploring PFAS contamination, its chemical properties, environmental pathways, and global solutions. Learn about the forever chemicals affecting our water, soil, and health.',
   keywords: ['PFAS', 'forever chemicals', 'chemical waste', 'environmental contamination', 'water pollution', 'soil contamination'],
   authors: [{ name: 'Environmental Chemistry Education' }],
