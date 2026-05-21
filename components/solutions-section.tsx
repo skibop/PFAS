@@ -13,7 +13,7 @@ const solutions = [
     icon: Globe,
     name: "European Union",
     approach: "Universal PFAS Restriction",
-    description: "The EU has proposed a comprehensive ban on PFAS under REACH regulation—the most extensive chemical regulation in history.",
+    description: "The EU has proposed a comprehensive ban on PFAS under REACH (Registration, Evaluation, Authorization, and Restriction of Chemicals).",
     actions: [
       "Universal restriction covering all 10,000+ PFAS compounds",
       "Phase-out timeline of 18 months to 13.5 years",
@@ -75,7 +75,7 @@ const solutions = [
       "UV/sulfite photochemical treatment"
     ],
     pros: ["Permanent destruction", "No secondary waste", "Environmentally sound"],
-    cons: ["High energy requirements", "Most in development", "High capital costs"],
+    cons: ["High energy requirements", "Carbon Emissions", "High capital costs"],
     effectiveness: 65,
     color: "accent"
   }
@@ -283,15 +283,14 @@ export function SolutionsSection() {
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-6">
                     The EU approach represents the most effective long-term solution by addressing the entire class of PFAS chemicals, 
-                    preventing regrettable substitution, and creating regulatory certainty for industry transition.
+                    and creating regulatory certainty for industry transition.
                   </p>
                   
                   <div className="bg-card/50 rounded-2xl p-5 border border-border backdrop-blur-sm">
                     <h4 className="font-bold text-foreground mb-2">Key Challenges</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       While comprehensive, the EU approach faces implementation challenges including lengthy timelines (up to 13.5 years), 
-                      industry opposition, and the need for viable alternatives in critical applications. A truly effective global solution 
-                      requires international coordination and investment in destruction technologies.
+                      industry opposition, and the need for viable alternatives. 
                     </p>
                   </div>
                 </div>
