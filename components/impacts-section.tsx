@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Heart, Brain, Baby, Shield, Activity, Dna, Fish, Bird, Bug, AlertTriangle, TrendingUp } from "lucide-react"
+import { Heart, Brain, Baby, Shield, Activity, Dna, Fish, Bird, Bug, TrendingUp, Flame, Droplets, Wind, Sprout } from "lucide-react"
 
 const healthEffects = [
   {
@@ -88,9 +88,49 @@ const ecosystemImpacts = [
       "Plant uptake into food crops",
       "Persistent contamination"
     ],
-    threshold: "10-100 ng/g soil threshold"
+    threshold: "10–100 ng/g soil threshold"
   }
 ]
+
+// AFFF pathway: source → three affected environments/organisms
+const afffPathway = {
+  source: {
+    name: "Aqueous Film-Forming Foam (AFFF)",
+    description:
+      "AFFF is a fluorinated firefighting suppressant used at military bases, airports, and industrial facilities since the 1960s. During training exercises and emergency response, vast quantities are discharged directly onto soil and into drainage systems. Industrial textile manufacturing releases PFAS through wastewater effluent. Because PFOS and PFOA in AFFF resist breakdown, a single spill can contaminate an area for decades.",
+    concentration: "AFFF concentrations of 1–6% PFOS/PFOA by volume",
+    sites: "700+ U.S. military bases confirmed contaminated",
+  },
+  pathways: [
+    {
+      icon: Droplets,
+      label: "Groundwater & drinking supply",
+      color: "#185FA5",
+      colorLight: "#E6F1FB",
+      description:
+        "PFAS leach through soil into aquifers at rates conventional filtration cannot intercept. Contaminated groundwater reaches municipal wells and private supplies, directly exposing human populations.",
+      stat: "Up to 6 mg/L PFAS detected near AFFF training sites",
+    },
+    {
+      icon: Sprout,
+      label: "Agricultural soil & crops",
+      color: "#3B6D11",
+      colorLight: "#EAF3DE",
+      description:
+        "Irrigation with contaminated water and direct land application of AFFF-affected runoff allows PFAS to bind to soil particles. Plants absorb PFAS through root uptake, entering the food supply through vegetables and grain.",
+      stat: "Root vegetables accumulate PFAS at 10–100x soil levels",
+    },
+    {
+      icon: Wind,
+      label: "Air & spray drift",
+      color: "#854F0B",
+      colorLight: "#FAEEDA",
+      description:
+        "During active firefighting and training, fine AFFF mist becomes airborne. PFAS-laden aerosols travel significant distances from the release point, settling on surface water, soil, and vegetation far from the original site.",
+      stat: "Detectable PFAS drift recorded up to 2 km from discharge",
+    },
+  ],
+}
 
 export function ImpactsSection() {
   const ref = useRef(null)
@@ -99,9 +139,8 @@ export function ImpactsSection() {
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden" ref={ref}>
-      {/* Background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -115,7 +154,79 @@ export function ImpactsSection() {
           </h2>
         </motion.div>
 
-        {/* Human Health Effects */}
+        {/* ── AFFF Waste Source Pathway ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mb-20"
+        >
+          <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-8 text-center">
+            Contamination Source: AFFF
+          </h3>
+
+          {/* Source card */}
+          <div className="rounded-3xl border border-border bg-card overflow-hidden mb-6">
+            <div className="bg-accent/10 border-b border-accent/20 px-8 lg:px-10 py-6 flex items-start gap-5">
+              <div className="p-3 rounded-xl bg-accent/20 border border-accent/30 flex-shrink-0">
+                <Flame className="h-7 w-7 text-accent" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-foreground mb-1">{afffPathway.source.name}</h4>
+                <div className="flex flex-wrap gap-3 mt-2">
+                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+                    {afffPathway.source.concentration}
+                  </span>
+                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+                    {afffPathway.source.sites}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="px-8 lg:px-10 py-6">
+              <p className="text-muted-foreground leading-relaxed">
+                {afffPathway.source.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Three affected pathways */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {afffPathway.pathways.map((pathway, index) => (
+  <motion.div
+    key={pathway.label}
+    initial={{ opacity: 0, y: 20 }}
+    animate={isInView ? { opacity: 1, y: 0 } : {}}
+    transition={{ duration: 0.5, delay: 0.3 + index * 0.12 }}
+    className="rounded-2xl border border-border bg-card overflow-hidden"
+  >
+    <div
+      className="px-5 py-4 flex items-center gap-3 border-b border-border"
+      style={{ background: pathway.color + "18" }}
+    >
+      <div
+        className="p-2 rounded-lg flex-shrink-0"
+        style={{ background: pathway.color + "22", border: `1px solid ${pathway.color}44` }}
+      >
+        <pathway.icon size={18} style={{ color: pathway.color }} />
+      </div>
+      <h4 className="font-bold text-sm text-foreground leading-snug">{pathway.label}</h4>
+    </div>
+    <div className="p-5 space-y-4">
+      <p className="text-sm text-muted-foreground leading-relaxed">{pathway.description}</p>
+      <div
+        className="rounded-xl px-4 py-2.5 text-xs font-medium"
+        style={{ background: pathway.color + "18", color: pathway.color, border: `1px solid ${pathway.color}33` }}
+      >
+        {pathway.stat}
+      </div>
+    </div>
+  </motion.div>
+))}
+          </div>
+        </motion.div>
+
+        {/* ── Human Health Effects ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -123,7 +234,7 @@ export function ImpactsSection() {
           className="mb-20"
         >
           <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-8 text-center">Human Health Effects</h3>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {healthEffects.map((effect, index) => (
               <motion.div
@@ -141,9 +252,8 @@ export function ImpactsSection() {
                       : "border-border hover:border-primary/30"
                   }`}
                 >
-                  {/* Glow effect on hover */}
                   <div className={`absolute inset-0 bg-${effect.color}/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  
+
                   <div className="relative p-6">
                     <div className="flex items-center gap-4 mb-4">
                       <div className={`p-3 rounded-xl bg-${effect.color}/10 border border-${effect.color}/20`}>
@@ -151,10 +261,8 @@ export function ImpactsSection() {
                       </div>
                       <h4 className="font-bold text-lg text-foreground">{effect.title}</h4>
                     </div>
-                    
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {effect.description}
-                    </p>
+
+                    <p className="text-muted-foreground mb-4 leading-relaxed">{effect.description}</p>
 
                     {activeEffect === index && (
                       <motion.div
@@ -174,7 +282,7 @@ export function ImpactsSection() {
                       </motion.div>
                     )}
 
-                    <p className={`text-xs mt-4 ${activeEffect === index ? 'text-muted-foreground' : `text-${effect.color}`}`}>
+                    <p className={`text-xs mt-4 ${activeEffect === index ? "text-muted-foreground" : `text-${effect.color}`}`}>
                       {activeEffect === index ? "Click to collapse" : "Click for research details"}
                     </p>
                   </div>
@@ -184,7 +292,7 @@ export function ImpactsSection() {
           </div>
         </motion.div>
 
-        {/* Ecosystem Impacts */}
+        {/* ── Ecosystem Impacts ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -192,7 +300,7 @@ export function ImpactsSection() {
           className="mb-20"
         >
           <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-8 text-center">Ecosystem Impacts</h3>
-          
+
           <div className="grid md:grid-cols-3 gap-5">
             {ecosystemImpacts.map((impact, index) => (
               <motion.div
@@ -209,7 +317,7 @@ export function ImpactsSection() {
                   </div>
                   <h4 className="font-bold text-foreground text-lg">{impact.organism}</h4>
                 </div>
-                
+
                 <ul className="space-y-3 mb-5">
                   {impact.effects.map((effect, i) => (
                     <li key={i} className="flex items-start gap-2 text-muted-foreground">
@@ -218,10 +326,10 @@ export function ImpactsSection() {
                     </li>
                   ))}
                 </ul>
-                
+
                 <div className="bg-muted/30 rounded-xl px-4 py-3 border border-border">
                   <p className="text-xs text-muted-foreground">
-                    <span className="font-semibold text-foreground">Effect Threshold: </span>
+                    <span className="font-semibold text-foreground">Effect threshold: </span>
                     {impact.threshold}
                   </p>
                 </div>
@@ -230,7 +338,7 @@ export function ImpactsSection() {
           </div>
         </motion.div>
 
-        {/* Key Statistics */}
+        {/* ── Key Statistics ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -243,7 +351,7 @@ export function ImpactsSection() {
                 <TrendingUp className="h-6 w-6 text-accent" />
                 <h3 className="text-xl font-bold text-foreground">Critical Statistics</h3>
               </div>
-              
+
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
                   { value: "4 ppt", label: "New EPA Health Advisory", subtext: "Down from 70 ppt in 2016" },
