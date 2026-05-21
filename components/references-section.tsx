@@ -83,6 +83,11 @@ const additionalResources = [
     name: "European Chemicals Agency",
     url: "https://echa.europa.eu/hot-topics/perfluoroalkyl-chemicals-pfas",
     description: "EU PFAS restriction proposal and regulatory documents"
+  },
+  {
+    name: "Blood Sampling",
+    url: "https://www.sciencealert.com/forever-chemicals-found-in-98-8-of-human-blood-samples-tested",
+    description: "PFAS chemicals found in human blood"
   }
 ]
 
