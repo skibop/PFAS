@@ -26,7 +26,7 @@ const healthEffects = [
     icon: Activity,
     title: "Thyroid Disease",
     description: "Disrupts thyroid hormone production and metabolism, leading to hypothyroidism.",
-    evidence: "NHANES data: Individuals with high PFOA levels have 2x higher rates of thyroid disease",
+    evidence: "NHANES data: Individuals with high PFOA levels have higher rates of thyroid disease",
     mechanism: "PFAS compete with thyroid hormones (T3, T4) for binding to transport proteins",
     color: "primary"
   },
@@ -120,7 +120,7 @@ const afffPathway = {
       color: "#3B6D11",
       description:
         "Irrigation with contaminated water and direct land application of AFFF-affected runoff allows PFAS to bind to soil particles. Plants absorb PFAS through root uptake, entering the food supply through vegetables and grain.",
-      stat: "Root vegetables accumulate PFAS at 10–100x soil levels",
+      stat: "Root vegetables accumulate PFAS at extremely high soil levels",
     },
     {
       icon: Wind,

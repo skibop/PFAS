@@ -88,6 +88,46 @@ const additionalResources = [
     name: "Blood Sampling",
     url: "https://www.sciencealert.com/forever-chemicals-found-in-98-8-of-human-blood-samples-tested",
     description: "PFAS chemicals found in human blood"
+  },
+  {
+    name: "DuPont Case Study",
+    url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2799461/",
+  },
+  {
+    name: "Faroe Islands Vaccine Study",
+    url: "https://pubmed.ncbi.nlm.nih.gov/22274686/"
+  },
+  {
+    name: "Danish National Birth Cohort",
+    url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6164159/"
+  },
+  {
+    name: "Chemours/GenX Cape Fear River",
+    url: "https://www.cohenmilstein.com/case-study/carey-et-al-v-ei-du-pont-de-nemours-and-co-inc-et-al-cape-fear-river-nc-water/"
+  },
+  {
+    name: "Water Contamination — Pease AFB, Portsmouth",
+    url: "https://trulaw.com/pfas-water-contamination-lawsuit/list-of-military-bases-with-contaminated-water/"
+  },
+  {
+    name: "Soil Accumulation — Maine farms / biosolids",
+    url: "https://www.maine.gov/dhhs/mecdc/healthy-living/health-and-safety/pfas-in-maine/pfas-and-agriculture",
+  },
+  {
+    name: "Aquatic Bioaccumulation — Great Lakes fish advisories",
+    url: "https://www.in.gov/health/eph/files/PFOS-Best-Practice-6-20.pdf"
+  },
+  {
+    name: "Human Exposure — CDC NHANES / 98% figure",
+    url: "https://www.cdc.gov/biomonitoring/PFAS_biomonitoring.html"
+  },
+  {
+    name: "Water Bodies",
+    url: "https://www.usgs.gov/news/national-news-release/tap-water-study-detects-pfas-forever-chemicals-across-us"
+  },
+  {
+    name: "Degradation",
+    url: "https://www.pbs.org/newshour/science/researchers-have-developed-a-way-to-break-down-long-lasting-pfas-compounds-using-light"
   }
 ]
 
